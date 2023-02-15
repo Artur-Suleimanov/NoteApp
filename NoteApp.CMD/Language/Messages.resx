@@ -123,6 +123,9 @@
   <data name="AddUser?" xml:space="preserve">
     <value>Добавить пользователя</value>
   </data>
+  <data name="DeleteNote" xml:space="preserve">
+    <value>D - Удалить заметку</value>
+  </data>
   <data name="EnterName" xml:space="preserve">
     <value>Введите имя пользователя</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="ErrorNoteTitle" xml:space="preserve">
     <value>Заголовок заметки не может быть пустым или содержать только пробел.</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Q - Выход</value>
   </data>
   <data name="Hello" xml:space="preserve">
     <value>Вас приветствует приложение NoteApp</value>
@@ -158,6 +164,9 @@
   </data>
   <data name="SelectNote" xml:space="preserve">
     <value>Выберите заметку: </value>
+  </data>
+  <data name="ShowAllNotes" xml:space="preserve">
+    <value>S - Показать все заметки</value>
   </data>
   <data name="What do you want to do?" xml:space="preserve">
     <value>Что вы хотите сделать?</value>

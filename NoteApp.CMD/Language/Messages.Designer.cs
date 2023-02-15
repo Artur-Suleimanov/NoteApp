@@ -79,6 +79,15 @@ namespace NoteApp.CMD.Language {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на D - Удалить заметку.
+        /// </summary>
+        internal static string DeleteNote {
+            get {
+                return ResourceManager.GetString("DeleteNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Введите имя пользователя.
         /// </summary>
         internal static string EnterName {
@@ -120,6 +129,15 @@ namespace NoteApp.CMD.Language {
         internal static string ErrorNoteTitle {
             get {
                 return ResourceManager.GetString("ErrorNoteTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Q - Выход.
+        /// </summary>
+        internal static string Exit {
+            get {
+                return ResourceManager.GetString("Exit", resourceCulture);
             }
         }
         
@@ -183,6 +201,15 @@ namespace NoteApp.CMD.Language {
         internal static string SelectNote {
             get {
                 return ResourceManager.GetString("SelectNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на S - Показать все заметки.
+        /// </summary>
+        internal static string ShowAllNotes {
+            get {
+                return ResourceManager.GetString("ShowAllNotes", resourceCulture);
             }
         }
         

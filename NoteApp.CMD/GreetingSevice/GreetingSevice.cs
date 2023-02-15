@@ -31,50 +31,62 @@ namespace NoteApp.CMD
             _resourceManager = new ResourceManager("NoteApp.CMD.Language.Messages", typeof(Program).Assembly);
         }
 
+        /// <summary>
+        /// Основной метод программы.
+        /// </summary>
         public void Run()
         {
-            Console.WriteLine(_resourceManager.GetString("Hello"));
-
-            // Авторизация или добавление нового пользователя:
-            Autorization();
-
             while (true)
             {
-                Console.WriteLine(_resourceManager.GetString("What do you want to do?"));
-                Console.WriteLine("A - Добавить заметку");
-                Console.WriteLine("S - Показать все заметки");
-                Console.WriteLine("D - Удалить заметку");
-                Console.WriteLine("Q - Выход");
-
-                var key = Console.ReadKey();
-                Console.WriteLine();
-                Console.WriteLine();
-
-                _noteController.GetUserData(_userController.CurrentUser);
-
-                switch (key.Key)
+                try
                 {
-                    case ConsoleKey.A:
-                        AddNote();
-                        break;
+                    Console.WriteLine(_resourceManager.GetString("Hello"));
 
-                    case ConsoleKey.S: 
-                        if(ShowAllNotes() == true) SelectNotes();
-                        break;
+                    // Авторизация или добавление нового пользователя:
+                    Autorization();
 
-                    case ConsoleKey.D:
-                        if (ShowAllNotes() == true) DeleteNote();
-                        break;
+                    while (true)
+                    {
+                        Console.WriteLine(_resourceManager.GetString("What do you want to do?"));
+                        Console.WriteLine(_resourceManager.GetString("AddNote"));
+                        Console.WriteLine(_resourceManager.GetString("ShowAllNotes"));
+                        Console.WriteLine(_resourceManager.GetString("DeleteNote"));
+                        Console.WriteLine(_resourceManager.GetString("Exit"));
 
-                    case ConsoleKey.Q:
-                        Environment.Exit(0);
-                        break;
-                    default:
-                        Console.WriteLine(_resourceManager.GetString("IncorrectAnswer"));
-                        break;
+                        var key = Console.ReadKey();
+                        Console.WriteLine();
+                        Console.WriteLine();
+
+                        _noteController.GetUserData(_userController.CurrentUser);
+
+                        switch (key.Key)
+                        {
+                            case ConsoleKey.A:
+                                AddNote();
+                                break;
+
+                            case ConsoleKey.S:
+                                if (ShowAllNotes() == true) SelectNotes();
+                                break;
+
+                            case ConsoleKey.D:
+                                if (ShowAllNotes() == true) DeleteNote();
+                                break;
+
+                            case ConsoleKey.Q:
+                                Environment.Exit(0);
+                                break;
+                            default:
+                                Console.WriteLine(_resourceManager.GetString("IncorrectAnswer"));
+                                break;
+                        }
+                    }
+                }
+                catch(Exception ex)
+                {
+                    _log.LogError(ex.Message);
                 }
             }
-
         }
 
         /// <summary>
@@ -107,7 +119,7 @@ namespace NoteApp.CMD
             try
             {
                 var inputNoteNumber = Convert.ToInt32(Console.ReadLine());
-                var selectedNote = _noteController.GetCurrentUserNoteBook().Notes[inputNoteNumber];
+                var selectedNote = _noteController.GetCurrentUserNoteBook().Notes[inputNoteNumber - 1];
                 Console.WriteLine();
                 Console.WriteLine(selectedNote.Title);
                 Console.WriteLine(selectedNote.Text);
