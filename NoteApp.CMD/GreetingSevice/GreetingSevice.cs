@@ -85,6 +85,7 @@ namespace NoteApp.CMD
                 catch(Exception ex)
                 {
                     _log.LogError(ex.Message);
+                    Console.WriteLine(ex.Message);
                 }
             }
         }
