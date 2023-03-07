@@ -207,7 +207,7 @@ namespace NoteApp.CMD
                     _userController.FillFields(inputName);
 
                     if(_userController.CurrentUser == null)
-                {
+                    {
                         Console.WriteLine(_resourceManager.GetString("NoUser"));
                         Console.WriteLine($"{_resourceManager.GetString("AddUser?")} \"{inputName}\"?");
 
