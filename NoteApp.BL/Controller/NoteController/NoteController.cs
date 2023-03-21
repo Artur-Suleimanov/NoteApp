@@ -69,7 +69,7 @@ namespace NoteApp.BL.Controller.NoteController
         /// <param name="noteNumber">Номер заметки, которую нужно удалить.</param>
         public void DeleteNote(int noteNumber)
         {
-            GetCurrentUserNoteBook().Notes.RemoveAt(noteNumber - 1);
+            GetCurrentUserNoteBook().Notes.RemoveAt(noteNumber);
             Save();
         }
 

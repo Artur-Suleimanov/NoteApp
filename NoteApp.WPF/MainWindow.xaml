@@ -36,8 +36,8 @@
             </StackPanel>
         </Button>
         <TextBlock x:Name="userNameTextBlock"  Grid.Row="0" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 20 10 5"></TextBlock>
-        <Button x:Name="deleteButton" Grid.Row="2" Grid.Column="3" MaxHeight="50" VerticalAlignment="Bottom" Margin="5 5 5 10" MinWidth="90" MinHeight="35"></Button>
-        <Button x:Name="editButton" Grid.Row="2" Grid.Column="4" MaxHeight="50" VerticalAlignment="Bottom" Margin="5 5 5 10" MinWidth="90" MinHeight="35"></Button>
+        <Button x:Name="deleteButton" Grid.Row="2" Grid.Column="3" MaxHeight="50" VerticalAlignment="Bottom" Margin="5 5 5 10" MinWidth="90" MinHeight="35" Click="deleteButton_Click"></Button>
+        <Button x:Name="editButton" Grid.Row="2" Grid.Column="4" MaxHeight="50" VerticalAlignment="Bottom" Margin="5 5 5 10" MinWidth="90" MinHeight="35" Click="editButton_Click"></Button>
         <Button x:Name="addButton" Grid.Row="2" Grid.Column="5" MaxHeight="50" VerticalAlignment="Bottom" Margin="5 5 10 10" MinWidth="90" MinHeight="35" Click="addButton_Click"></Button>
     </Grid>
 </Window>

@@ -14,8 +14,14 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="noteTitle" Margin="10 10" TextChanged="noteTitle_TextChanged" Focusable="True" LostFocus="noteTitle_LostFocus" GotFocus="noteTitle_GotFocus"></TextBox>
-        <Button Grid.Row="1" Margin="100 100">dfdfg</Button>
+        <TextBox x:Name="noteTitle" Grid.Row="0" Margin="10 10" TextChanged="textBoxes_TextChanged" Focusable="True" LostFocus="noteTitle_LostFocus" GotFocus="noteTitle_GotFocus"></TextBox>
+        <TextBox x:Name="noteText" Grid.Row="1" Margin="10 10" TextChanged="textBoxes_TextChanged" Focusable="True" LostFocus="noteText_LostFocus" GotFocus="noteText_GotFocus" 
+                 TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="addButton"  MaxWidth="110" Margin="10 10" Click="addButton_Click">Добавить</Button>
+            <Button x:Name="cancelButton"  MaxWidth="110" Margin="10 10" Click="cancelButton_Click">Отменить</Button>
+        </StackPanel>
+        
 
     </Grid>
 </Window>

@@ -99,7 +99,7 @@ namespace NoteApp.CMD
             {
                 Console.Write(_resourceManager.GetString("NoteNumberToDelete"));
                 var userInput = Convert.ToInt32(Console.ReadLine());
-                _noteController.DeleteNote(userInput);
+                _noteController.DeleteNote(userInput - 1);
                 Console.WriteLine();
             }
             catch (Exception ex)

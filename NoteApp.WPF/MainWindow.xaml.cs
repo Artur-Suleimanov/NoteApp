@@ -32,6 +32,9 @@ public partial class MainWindow : Window, IMainWindow
     public ResourceManager ResourceManager { get; }
 
     public string InputName { get; set; }
+    public INoteController NoteController => _noteController;
+
+    public BindingList<string> NoteTitles { get => noteTitles; }
 
     BindingList<string> noteTitles = new BindingList<string>();
 
@@ -71,8 +74,20 @@ public partial class MainWindow : Window, IMainWindow
     private void notesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         ListBox listBox = (ListBox)sender;
-        var noteTitle = listBox.SelectedItem.ToString();
-        noteText.Text = _noteController.GetCurrentUserNoteBook().Notes.SingleOrDefault(note => note.Title == noteTitle).Text;
+
+        if(listBox.SelectedItem != null)
+        {
+            var noteTitle = listBox.SelectedItem.ToString();
+
+            noteText.Text = _noteController.GetCurrentUserNoteBook().Notes.SingleOrDefault(note => note.Title == noteTitle).Text;
+
+            deleteButton.IsEnabled = true;
+        }
+        else 
+        {
+            noteText.Text = string.Empty;
+            deleteButton.IsEnabled = false; 
+        }
     }
 
     private void logInButton_Click(object sender, RoutedEventArgs e)
@@ -114,17 +129,18 @@ public partial class MainWindow : Window, IMainWindow
 
         var userNoteBook = _noteController.GetCurrentUserNoteBook();
 
-        notesList.ItemsSource = noteTitles;
+        notesList.ItemsSource = NoteTitles;
 
         foreach (var note in userNoteBook.Notes)
         {
-            noteTitles.Add(note.Title);
+            NoteTitles.Add(note.Title);
         }
     }
 
     private void addButton_Click(object sender, RoutedEventArgs e)
     {
-        new NewNoteWindow().Show();
+        new NewNoteWindow(this).Show();
+        
     }
 
     private void ChangeButtonEnabled(bool argument)
@@ -134,5 +150,21 @@ public partial class MainWindow : Window, IMainWindow
         editButton.IsEnabled = argument;
         deleteButton.IsEnabled = argument;
         logInButton.IsEnabled = !argument;
+    }
+
+    private void editButton_Click(object sender, RoutedEventArgs e)
+    {
+        
+    }
+
+    private void deleteButton_Click(object sender, RoutedEventArgs e)
+    {
+        var noteTitle = notesList.SelectedItem.ToString();
+
+        var index = _noteController.GetCurrentUserNoteBook().Notes.FindIndex(note => note.Title == noteTitle);
+
+        _noteController.DeleteNote(index);
+
+        NoteTitles.RemoveAt(index);
     }
 }

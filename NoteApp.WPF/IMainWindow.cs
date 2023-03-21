@@ -1,4 +1,6 @@
-﻿using System.Resources;
+﻿using NoteApp.BL.Controller.NoteController;
+using System.ComponentModel;
+using System.Resources;
 
 namespace NoteApp.WPF
 {
@@ -6,6 +8,8 @@ namespace NoteApp.WPF
     {
         void InitializeComponent();
         string InputName { get; set; }
+        INoteController NoteController { get; }
+        BindingList<string> NoteTitles { get; }
 
         public ResourceManager ResourceManager { get; }
     }
