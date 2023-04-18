@@ -2,8 +2,8 @@
 {
     public interface INote
     {
-        string Text { get; }
-        string Title { get; }
+        string Text { get; set; }
+        string Title { get; set; }
 
         string ToString();
     }

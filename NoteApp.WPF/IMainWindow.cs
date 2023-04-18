@@ -11,6 +11,7 @@ namespace NoteApp.WPF
         INoteController NoteController { get; }
         BindingList<string> NoteTitles { get; }
 
-        public ResourceManager ResourceManager { get; }
+        ResourceManager ResourceManager { get; }
+        int SelectedNoteIndex { get; }
     }
 }

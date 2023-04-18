@@ -88,7 +88,7 @@ namespace NoteApp.WPF.Language {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на отмена.
+        ///   Ищет локализованную строку, похожую на Отмена.
         /// </summary>
         internal static string Cancel {
             get {
@@ -120,6 +120,15 @@ namespace NoteApp.WPF.Language {
         internal static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на NoteApp: Редактирование заметки.
+        /// </summary>
+        internal static string EditNote {
+            get {
+                return ResourceManager.GetString("EditNote", resourceCulture);
             }
         }
         
@@ -205,6 +214,15 @@ namespace NoteApp.WPF.Language {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на NoteApp: Создание новой заметки.
+        /// </summary>
+        internal static string NewNote {
+            get {
+                return ResourceManager.GetString("NewNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на нет.
         /// </summary>
         internal static string No {
@@ -250,7 +268,7 @@ namespace NoteApp.WPF.Language {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на ок.
+        ///   Ищет локализованную строку, похожую на Ок.
         /// </summary>
         internal static string Ok {
             get {
@@ -264,6 +282,24 @@ namespace NoteApp.WPF.Language {
         internal static string SelectNote {
             get {
                 return ResourceManager.GetString("SelectNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Текст заметки.
+        /// </summary>
+        internal static string Text {
+            get {
+                return ResourceManager.GetString("Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заголовок.
+        /// </summary>
+        internal static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         

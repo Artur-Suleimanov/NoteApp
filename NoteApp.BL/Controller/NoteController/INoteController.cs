@@ -13,5 +13,6 @@ namespace NoteApp.BL.Controller.NoteController
         INoteBook GetCurrentUserNoteBook();
         void GetUserData(IUser user);
         void DeleteNote(int noteNumber);
+        void EditNote(int noteNumber, string newTitle, string newText);
     }
 }

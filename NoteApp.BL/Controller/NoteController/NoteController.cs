@@ -74,6 +74,17 @@ namespace NoteApp.BL.Controller.NoteController
         }
 
         /// <summary>
+        /// Редактирование замеки.
+        /// </summary>
+        /// <param name="noteNumber"></param>
+        public void EditNote(int noteNumber, string newTitle, string newText)
+        {
+            GetCurrentUserNoteBook().Notes[noteNumber].Title = newTitle;
+            GetCurrentUserNoteBook().Notes[noteNumber].Text = newText;
+            Save();
+        }
+
+        /// <summary>
         /// Получение записной книжки пользователя. Если записная кникжка уже есть, то поле _newNoteBook останеться пустым.
         /// </summary>
         /// <returns></returns>

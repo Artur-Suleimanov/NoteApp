@@ -16,12 +16,12 @@ namespace NoteApp.BL.Model.Note
         /// <summary>
         /// Текст заметки.
         /// </summary>
-        public string Text => _text;
+        public string Text { get { return _text; } set { _text = value; } }
 
         /// <summary>
         /// Название заметки.
         /// </summary>
-        public string Title => _title;
+        public string Title { get { return _title; } set { _title = value; } }
 
         /// <summary>
         /// Создание заметки.

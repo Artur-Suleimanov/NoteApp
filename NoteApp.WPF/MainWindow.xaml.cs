@@ -38,6 +38,14 @@ public partial class MainWindow : Window, IMainWindow
 
     BindingList<string> noteTitles = new BindingList<string>();
 
+    public int SelectedNoteIndex { get; private set; } = -1;
+
+    public enum Buttons
+    {
+        EditNote,
+        AddNewNote,
+    }
+
     public MainWindow(
             ILogger<MainWindow> log,
             IConfiguration config,
@@ -82,11 +90,14 @@ public partial class MainWindow : Window, IMainWindow
             noteText.Text = _noteController.GetCurrentUserNoteBook().Notes.SingleOrDefault(note => note.Title == noteTitle).Text;
 
             deleteButton.IsEnabled = true;
+            SelectedNoteIndex = _noteController.GetCurrentUserNoteBook().Notes.FindIndex(note => note.Title == noteTitle);
         }
         else 
         {
             noteText.Text = string.Empty;
-            deleteButton.IsEnabled = false; 
+            deleteButton.IsEnabled = false;
+            editButton.IsEnabled = false;
+            SelectedNoteIndex = -1;
         }
     }
 
@@ -139,7 +150,7 @@ public partial class MainWindow : Window, IMainWindow
 
     private void addButton_Click(object sender, RoutedEventArgs e)
     {
-        new NewNoteWindow(this).Show();
+        new NewNoteWindow(this, ResourceManager, Buttons.AddNewNote).Show();
         
     }
 
@@ -154,17 +165,19 @@ public partial class MainWindow : Window, IMainWindow
 
     private void editButton_Click(object sender, RoutedEventArgs e)
     {
-        
+        if (SelectedNoteIndex == -1)
+            return;
+
+        new NewNoteWindow(this, ResourceManager, Buttons.EditNote).Show();
     }
 
     private void deleteButton_Click(object sender, RoutedEventArgs e)
     {
-        var noteTitle = notesList.SelectedItem.ToString();
+        if (SelectedNoteIndex == -1)
+            return;
 
-        var index = _noteController.GetCurrentUserNoteBook().Notes.FindIndex(note => note.Title == noteTitle);
+        _noteController.DeleteNote(SelectedNoteIndex);
 
-        _noteController.DeleteNote(index);
-
-        NoteTitles.RemoveAt(index);
+        NoteTitles.RemoveAt(SelectedNoteIndex);
     }
 }
